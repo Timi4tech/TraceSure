@@ -1,5 +1,5 @@
-import { useState,useEffect } from "react"
-import api,{initCsrf}from "../../services/api"
+import { useState } from "react"
+import api from "../../services/api"
 import { useNavigate, Link } from "react-router-dom"
 
 function Register() {
@@ -8,9 +8,7 @@ function Register() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  useEffect(() => {
-    initCsrf()
-  }, [])
+
  
 
   const register = async () => {

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import api,{initCsrf} from "../../services/api"
+import { useState } from "react"
+import api from "../../services/api"
 import { useNavigate, Link } from "react-router-dom"
 
 function Login() {
@@ -8,9 +8,7 @@ function Login() {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState('')
 
-useEffect(() => {
-    initCsrf()
-}, [])
+
 
   const login = async () => {
     setLoading('Logging in...')
