@@ -98,7 +98,7 @@ if (data) {
 
   data.tokens--
 
-  await redis.set(key, data, {
+  await redis.set(key, JSON.stringify(data), {
     ex: 300 // 5 minutes expiry
   })
 
