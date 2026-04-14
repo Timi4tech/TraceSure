@@ -30,14 +30,14 @@ process.env.ACCESS_JWT_SECRET,
 
 res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 15 * 60* 1000,
+      secure: true,
+      sameSite: "none",
+      maxAge: 60 * 60* 1000,
     })
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     })
    
@@ -75,14 +75,14 @@ process.env.ACCESS_JWT_SECRET,
 
 res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 15 * 60* 1000,
+      secure: true,
+      sameSite: "none",
+      maxAge: 60 * 60* 1000,
     })
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      sameSite: "lax",
       secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     })
 

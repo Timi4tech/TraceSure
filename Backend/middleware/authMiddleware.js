@@ -39,8 +39,8 @@ export const protect = (req, res, next) => {
           // Send new access token as cookie
           res.cookie("accessToken", newAccessToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 60 * 60 * 1000, // 1 hour
           });
 
