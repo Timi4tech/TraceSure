@@ -47,7 +47,7 @@ function ProductCard({ product }) {
       <div style={S.qrWrap} ref={qrRef}>
         <div style={S.qrInner}>
           <QRCodeSVG
-            value={`${import.meta.env.VITE_APP_URL}/stages/verify/${product._id}`}
+            value={`${import.meta.env.VITE_APP_FRONTEND_URL}/verify/${product._id}`}
             size={120}
             bgColor="transparent"
             fgColor="#7f1d1d"
