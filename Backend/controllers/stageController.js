@@ -39,12 +39,21 @@ res.json(stages)
 
 }
 
-export const verifyProduct = async(req,res)=>{
+export const verifyProduct = async (req, res) => {
+  try {
+    const productId = req.params.id
 
-const {id} = req.params.id
+    const stages = await Stage.find({ productId })
+      .sort({ timestamp: 1 })
 
-const stages = await Stage.find({ id})
+    if (!stages.length) {
+      return res.status(404).json({ message: "No stages found" })
+    }
 
-res.json(stages)
+    res.json(stages)
 
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: "Verification failed" })
+  }
 }
