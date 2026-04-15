@@ -41,9 +41,9 @@ res.json(stages)
 
 export const verifyProduct = async(req,res)=>{
 
-const {productId} = req.params
+const {id} = req.params.id
 
-const stages = await Stage.find({productId})
+const stages = await Stage.find({ id})
 
 res.json(stages)
 

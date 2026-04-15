@@ -7,7 +7,7 @@ function VerifyProduct() {
   const [product, setProduct] = useState(null)
 
   useEffect(() => {
-    api.get(`/verify/${id}`).then((res) => setProduct(res.data))
+    api.get(`/stages/verify/${id}`).then((res) => setProduct(res.data))
   }, [id])
 
   if (!product)

@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.post("/",protect,addStage)
 router.get("/",protect,getStages)
-router.get("/verify/:productId",verifyProduct)
+router.get("/verify/:id",verifyProduct)
 
 export default router
