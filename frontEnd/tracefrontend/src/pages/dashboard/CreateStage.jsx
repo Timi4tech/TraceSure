@@ -5,119 +5,125 @@ const S = {
   page: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "100vh",
+    alignItems: "stretch",
     width: "100%",
-    padding: "3rem 1.25rem",
+    minHeight: "100%",
+    padding: "0",
     fontFamily: "Georgia, 'Times New Roman', serif",
     background: "linear-gradient(155deg, #1a0a0a 0%, #3b0d0d 35%, #7f1d1d 65%, #991b1b 100%)",
     boxSizing: "border-box",
     position: "relative",
     overflow: "hidden",
   },
+
   blob1: { pointerEvents:"none", position:"absolute", top:"4%", left:"4%", width:"38%", height:"38%", background:"radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(20px)" },
-  blob2: { pointerEvents:"none", position:"absolute", top:"8%", right:"6%", width:"28%", height:"28%", background:"radial-gradient(circle, rgba(239,68,68,0.22) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(22px)" },
-  blob3: { pointerEvents:"none", position:"absolute", bottom:"12%", left:"8%", width:"32%", height:"32%", background:"radial-gradient(circle, rgba(180,30,30,0.18) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(22px)" },
-  blob4: { pointerEvents:"none", position:"absolute", bottom:"10%", right:"4%", width:"30%", height:"30%", background:"radial-gradient(circle, rgba(255,180,180,0.12) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(20px)" },
+  blob2: { pointerEvents:"none", position:"absolute", top:"8%", right:"6%", width:"28%", height:"28%", background:"radial-gradient(circle, rgba(239,68,68,0.18) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(22px)" },
+  blob3: { pointerEvents:"none", position:"absolute", bottom:"12%", left:"8%", width:"32%", height:"32%", background:"radial-gradient(circle, rgba(180,30,30,0.15) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(22px)" },
+  blob4: { pointerEvents:"none", position:"absolute", bottom:"10%", right:"4%", width:"30%", height:"30%", background:"radial-gradient(circle, rgba(255,180,180,0.08) 0%, transparent 70%)", borderRadius:"50%", filter:"blur(20px)" },
 
   outerCard: {
     position: "relative",
     zIndex: 10,
     width: "100%",
-    maxWidth: "460px",
-    borderRadius: "24px",
-    padding: "2.5rem 2rem",
-    background: "rgba(120,20,20,0.28)",
-    backdropFilter: "blur(24px)",
-    WebkitBackdropFilter: "blur(24px)",
-    border: "1px solid rgba(255,255,255,0.14)",
-    boxShadow: "0 8px 48px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12)",
+    flex: 1,
+    padding: "clamp(1rem, 4vw, 1.5rem) clamp(0.875rem, 4vw, 1.25rem)",
+    boxSizing: "border-box",
+    background: "transparent",
   },
 
   title: {
-    fontSize: "26px",
+    fontSize: "clamp(17px, 5vw, 22px)",
     fontWeight: "700",
     textAlign: "center",
-    marginBottom: "1.75rem",
+    marginBottom: "1.25rem",
     color: "#fff",
     letterSpacing: "0.01em",
     fontFamily: "Georgia, serif",
   },
 
   innerCard: {
-    borderRadius: "16px",
-    padding: "1.5rem",
-    background: "rgba(255,255,255,0.10)",
-    backdropFilter: "blur(10px)",
-    WebkitBackdropFilter: "blur(10px)",
-    border: "1px solid rgba(255,255,255,0.18)",
-    boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+    borderRadius: "14px",
+    padding: "clamp(0.875rem, 4vw, 1.25rem)",
+    background: "rgba(80, 10, 10, 0.55)",
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    border: "1px solid rgba(255,255,255,0.10)",
+    boxShadow: "0 2px 16px rgba(0,0,0,0.30)",
+    width: "100%",
+    boxSizing: "border-box",
   },
 
-  fieldGroup: { marginBottom: "1.25rem" },
+  fieldGroup: { marginBottom: "1rem" },
 
   labelRow: {
     display: "flex",
     alignItems: "center",
-    gap: "8px",
-    marginBottom: "8px",
+    gap: "6px",
+    marginBottom: "6px",
   },
 
   label: {
-    fontSize: "13px",
+    fontSize: "12px",
     fontWeight: "600",
-    color: "rgba(255,235,235,0.92)",
+    color: "rgba(255,220,220,0.90)",
     fontFamily: "Georgia, serif",
     letterSpacing: "0.02em",
   },
 
-  inputWrap: { position: "relative" },
+  inputWrap: {
+    position: "relative",
+    width: "100%",
+    boxSizing: "border-box",
+  },
 
   iconLeft: {
     position: "absolute",
-    left: "12px",
+    left: "10px",
     top: "50%",
     transform: "translateY(-50%)",
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
+    zIndex: 1,
   },
 
   iconTopLeft: {
     position: "absolute",
-    left: "12px",
-    top: "14px",
+    left: "10px",
+    top: "12px",
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
+    zIndex: 1,
   },
 
   select: {
     width: "100%",
-    paddingLeft: "36px",
-    paddingRight: "36px",
-    paddingTop: "10px",
-    paddingBottom: "10px",
-    borderRadius: "10px",
-    fontSize: "14px",
+    paddingLeft: "30px",
+    paddingRight: "28px",
+    paddingTop: "9px",
+    paddingBottom: "9px",
+    borderRadius: "9px",
+    fontSize: "13px",
     outline: "none",
     appearance: "none",
+    WebkitAppearance: "none",
     cursor: "pointer",
-    background: "rgba(255,255,255,0.12)",
-    border: "1px solid rgba(255,200,200,0.22)",
+    background: "rgba(60, 8, 8, 0.70)",
+    border: "1px solid rgba(200,80,80,0.30)",
     color: "#fff",
     fontFamily: "Georgia, serif",
     boxSizing: "border-box",
+    display: "block",
   },
 
   selectEmpty: {
-    color: "rgba(255,200,200,0.45)",
+    color: "rgba(255,180,180,0.50)",
   },
 
   chevron: {
     position: "absolute",
-    right: "12px",
+    right: "10px",
     top: "50%",
     transform: "translateY(-50%)",
     pointerEvents: "none",
@@ -127,43 +133,46 @@ const S = {
 
   textarea: {
     width: "100%",
-    paddingLeft: "36px",
-    paddingRight: "14px",
-    paddingTop: "12px",
-    paddingBottom: "12px",
-    borderRadius: "10px",
-    fontSize: "14px",
+    paddingLeft: "30px",
+    paddingRight: "10px",
+    paddingTop: "10px",
+    paddingBottom: "10px",
+    borderRadius: "9px",
+    fontSize: "13px",
     outline: "none",
     resize: "vertical",
-    background: "rgba(255,255,255,0.12)",
-    border: "1px solid rgba(255,200,200,0.22)",
+    background: "rgba(60, 8, 8, 0.70)",
+    border: "1px solid rgba(200,80,80,0.30)",
     color: "#fff",
     fontFamily: "Georgia, serif",
     boxSizing: "border-box",
     lineHeight: "1.6",
-    minHeight: "120px",
+    minHeight: "90px",
+    display: "block",
   },
 
   divider: {
     height: "1px",
-    background: "rgba(255,255,255,0.10)",
-    margin: "1.25rem 0",
+    background: "rgba(255,255,255,0.08)",
+    margin: "1rem 0",
   },
 
   submitBtn: {
     width: "100%",
-    padding: "12px",
-    borderRadius: "10px",
+    padding: "11px",
+    borderRadius: "9px",
     border: "none",
     background: "linear-gradient(135deg, #b91c1c, #7f1d1d)",
     boxShadow: "0 4px 20px rgba(185,28,28,0.45)",
     color: "#fff",
     fontWeight: "700",
-    fontSize: "15px",
+    fontSize: "14px",
     cursor: "pointer",
     fontFamily: "Georgia, serif",
     letterSpacing: "0.02em",
     transition: "opacity 0.15s, transform 0.1s",
+    display: "block",
+    boxSizing: "border-box",
   },
 
   submitDisabled: {
@@ -172,34 +181,33 @@ const S = {
     transform: "none",
   },
 
-  // Stage pills shown when templates loaded
   stageHint: {
     display: "flex",
     flexWrap: "wrap",
-    gap: "6px",
-    marginTop: "8px",
+    gap: "5px",
+    marginTop: "7px",
   },
 
   stagePill: {
     display: "inline-flex",
     alignItems: "center",
-    padding: "3px 10px",
+    padding: "2px 9px",
     borderRadius: "20px",
     fontSize: "11px",
     fontWeight: "500",
-    background: "rgba(185,28,28,0.30)",
-    border: "1px solid rgba(255,180,180,0.18)",
+    background: "rgba(140, 20, 20, 0.50)",
+    border: "1px solid rgba(200,100,100,0.25)",
     color: "rgba(255,210,210,0.9)",
     fontFamily: "Georgia, serif",
   },
 }
 
-const ICON = "rgba(255,200,200,0.7)"
-const ICON_SM = "rgba(255,200,200,0.45)"
+const ICON = "rgba(255,180,180,0.75)"
+const ICON_SM = "rgba(255,160,160,0.50)"
 
 function BoxIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ICON} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={ICON} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
       <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
     </svg>
@@ -208,7 +216,7 @@ function BoxIcon() {
 
 function GearIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ICON} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={ICON} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="3"/>
       <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
     </svg>
@@ -217,7 +225,7 @@ function GearIcon() {
 
 function NotesIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ICON} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={ICON} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
       <polyline points="14 2 14 8 20 8"/>
       <line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>
@@ -227,7 +235,7 @@ function NotesIcon() {
 
 function SelectIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={ICON_SM} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={ICON_SM} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
     </svg>
   )
@@ -235,7 +243,7 @@ function SelectIcon() {
 
 function ChevronIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={ICON_SM} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={ICON_SM} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   )
@@ -243,7 +251,7 @@ function ChevronIcon() {
 
 function TextareaIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={ICON_SM} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={ICON_SM} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="10" x2="14" y2="10"/><line x1="4" y1="14" x2="10" y2="14"/>
     </svg>
   )
@@ -313,20 +321,16 @@ function CreateStage() {
 
         <div style={S.innerCard}>
 
-          {/* Product select */}
           <Field label="Select Product" icon={<BoxIcon />}>
             <div style={S.inputWrap}>
               <span style={S.iconLeft}><SelectIcon /></span>
               <select
                 onChange={handleProductChange}
-                style={{
-                  ...S.select,
-                  ...(productId ? {} : S.selectEmpty),
-                }}
+                style={{ ...S.select, ...(productId ? {} : S.selectEmpty) }}
               >
-                <option value="" style={{ color: "#333" }}>Select product</option>
+                <option value="" style={{ color: "#ccc", background: "#3b0d0d" }}>Select product</option>
                 {products.map((p) => (
-                  <option key={p._id} value={p._id} style={{ color: "#1a0a0a", background: "#fff" }}>
+                  <option key={p._id} value={p._id} style={{ color: "#fff", background: "#3b0d0d" }}>
                     {p.name}
                   </option>
                 ))}
@@ -335,23 +339,19 @@ function CreateStage() {
             </div>
           </Field>
 
-          {/* Stage select */}
           <Field label="Production Stage" icon={<GearIcon />}>
             <div style={S.inputWrap}>
               <span style={S.iconLeft}><SelectIcon /></span>
               <select
                 value={stageName}
                 onChange={(e) => setStageName(e.target.value)}
-                style={{
-                  ...S.select,
-                  ...(stageName ? {} : S.selectEmpty),
-                }}
+                style={{ ...S.select, ...(stageName ? {} : S.selectEmpty) }}
               >
-                <option value="" style={{ color: "#333" }}>
+                <option value="" style={{ color: "#ccc", background: "#3b0d0d" }}>
                   {templates.length === 0 ? "Select a product first" : "Select stage"}
                 </option>
                 {templates.map((stage) => (
-                  <option key={stage} value={stage} style={{ color: "#1a0a0a", background: "#fff" }}>
+                  <option key={stage} value={stage} style={{ color: "#fff", background: "#3b0d0d" }}>
                     {stage}
                   </option>
                 ))}
@@ -359,7 +359,6 @@ function CreateStage() {
               <span style={S.chevron}><ChevronIcon /></span>
             </div>
 
-            {/* Stage pills preview */}
             {templates.length > 0 && (
               <div style={S.stageHint}>
                 {templates.map((stage) => (
@@ -368,8 +367,8 @@ function CreateStage() {
                     style={{
                       ...S.stagePill,
                       ...(stageName === stage ? {
-                        background: "rgba(185,28,28,0.55)",
-                        border: "1px solid rgba(255,180,180,0.35)",
+                        background: "rgba(185,28,28,0.65)",
+                        border: "1px solid rgba(255,160,160,0.40)",
                         color: "#fff",
                       } : {}),
                     }}
@@ -381,7 +380,6 @@ function CreateStage() {
             )}
           </Field>
 
-          {/* Stage notes */}
           <Field label="Stage Details" icon={<NotesIcon />}>
             <div style={S.inputWrap}>
               <span style={S.iconTopLeft}><TextareaIcon /></span>
@@ -389,7 +387,7 @@ function CreateStage() {
                 placeholder="Quality notes, temperature, operator details..."
                 value={data}
                 onChange={(e) => setData(e.target.value)}
-                rows={5}
+                rows={4}
                 style={S.textarea}
               />
             </div>
@@ -397,7 +395,6 @@ function CreateStage() {
 
           <div style={S.divider} />
 
-          {/* Submit */}
           <button
             onClick={submitStage}
             disabled={loading}

@@ -1,4 +1,18 @@
+import { useState, useEffect } from "react"
+import api from "../services/api"
+
+
 function Navbar() {
+   const [user,setUser] = useState({})
+    useEffect(() => {
+  const getUserData = async () => {
+  
+  const res = await api.get("/auth/user")
+  setUser({ name: res.data.name , email: res.data._id})
+  
+  }
+  getUserData()
+  }, [user._id])
   return (
     <header style={S.header}>
 
@@ -25,7 +39,7 @@ function Navbar() {
       {/* Company pill right */}
       <div style={S.pill}>
         <div style={S.pillDot} />
-        <span style={S.pillText}>Company</span>
+        <span style={S.pillText}>{user.name}</span>
       </div>
 
     </header>

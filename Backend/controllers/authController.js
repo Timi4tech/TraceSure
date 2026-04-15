@@ -114,13 +114,13 @@ res.status(500).json({message:"Server error"})
 export const logout = async (req, res) => {
   res.clearCookie("accessToken", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax", // or "lax" depending on your setup
+    secure: true,
+    sameSite: "none", // or "lax" depending on your setup
   });
 res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax", 
+    secure: true,
+    sameSite: "none", 
   });
   res.status(200).json({
     success: true,

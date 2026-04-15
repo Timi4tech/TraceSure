@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import api from "../services/api"
 
@@ -8,6 +8,7 @@ const links = [
   { to: "/products",       label: "Products",       icon: BoxIcon },
   { to: "/product-stages", label: "Product Stages", icon: GearIcon },
 ]
+
 
 function NavLinks({ pathname, onNavigate }) {
   return (
@@ -104,13 +105,24 @@ function LogoutButton({ onLogout }) {
 }
 
 function SidebarFooter({ onLogout }) {
+  const [user,setUser] = useState({})
+  useEffect(() => {
+const getUserData = async () => {
+
+const res = await api.get("/auth/user")
+setUser({ name: res.data.name , email: res.data._id})
+
+}
+getUserData()
+}, [user._id])
   return (
     <div style={{ marginTop: "auto" }}>
       <div style={S.divider} />
       <div style={S.footerPill}>
         <div style={S.pillDot} />
-        <span style={S.pillText}>Company</span>
+        <span style={S.pillText}>{user.name}</span>
       </div>
+      
       <div style={{ marginTop: "8px" }}>
         <LogoutButton onLogout={onLogout} />
       </div>
@@ -120,12 +132,14 @@ function SidebarFooter({ onLogout }) {
 
 function Sidebar() {
   const { pathname } = useLocation()
+
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
 
+
   const handleLogout = async () => {
-    const res = await api.get("/logout")
-    if (res.ok) {
+    const res = await api.get("/auth/logout")
+    if (res.data.success) {
       setOpen(false)
       navigate("/login")
     }

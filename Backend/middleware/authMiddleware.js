@@ -72,35 +72,39 @@ export const rateLimiter = async (req, res, next) => {
   const key = `rate:${userId}`
   const now = Date.now()
 
-  let data = await redis.get(key)
+  try {
+    let data = await redis.get(key)
 
-if (data) {
-  data = JSON.parse(data)
-} else {
-  data = {
-    tokens: LIMIT,
-    lastRefill: now
+    if (data) {
+      // Handle both raw string and auto-parsed object
+      data = typeof data === "string" ? JSON.parse(data) : data
+    } else {
+      data = {
+        tokens: LIMIT,
+        lastRefill: now,
+      }
+    }
+
+    // Refill logic
+    const timePassed = (now - data.lastRefill) / 1000
+    const refill = Math.floor(timePassed * REFILL_RATE)
+
+    data.tokens = Math.min(LIMIT, data.tokens + refill)
+    data.lastRefill = now
+
+    if (data.tokens <= 0) {
+      return res.status(429).json({ message: "Too many requests" })
+    }
+
+    data.tokens--
+
+    await redis.set(key, JSON.stringify(data), { ex: 300 })
+
+    next()
+
+  } catch (err) {
+    console.error("Rate limiter error:", err)
+    // Fail open — don't block requests if Redis has an issue
+    next()
   }
-}
-
-  // refill logic
-  const timePassed = (now - data.lastRefill) / 1000
-  const refill = Math.floor(timePassed * REFILL_RATE)
-  
-  data.tokens = Math.min(LIMIT, data.tokens + refill)
-  data.lastRefill = now
-  
-  if (data.tokens <= 0) {
-    return res.status(429).json({
-      message: "Too many requests"
-    })
-  }
-
-  data.tokens--
-
-  await redis.set(key, JSON.stringify(data), {
-    ex: 300 // 5 minutes expiry
-  })
-
-  next()
 }
