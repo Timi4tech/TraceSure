@@ -8,24 +8,38 @@ function VerifyProduct() {
   const [product, setProduct] = useState(null)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    api.get(`/stages/verify/${id}`)
-      .then((res) => {
-        const data = res.data ?? res
-        const stagesArray = Array.isArray(data) ? data : []
-        setStages(stagesArray)
-        if (stagesArray.length > 0 && stagesArray[0].productId) {
-          return api.get(`/products/${stagesArray[0].productId}`)
+
+
+
+useEffect(() => {
+  const getVerificationDetails = async () => {
+    try {
+      const res = await api.get(`/stages/verify/${id}`);
+
+      const data = res.data;
+      const stagesArray = Array.isArray(data) ? data : [];
+
+      setStages(stagesArray);
+
+      const productId = stagesArray?.[0]?.productId;
+
+      if (productId) {
+        const productRes = await api.get(`/products/${productId}`);
+
+        if (productRes.data) {
+          setProduct(productRes.data);
         }
-      })
-      .then((res) => {
-        if (res) setProduct(res.data ?? res)
-      })
-      .catch((err) => {
-        console.error("VerifyProduct error:", err)
-        setError("Could not load product details.")
-      })
-  }, [id])
+      }
+
+    } catch (err) {
+      console.error("VerifyProduct error:", err);
+      setError("Could not load product details.");
+    }
+  };
+
+  getVerificationDetails();
+}, [id]);
+      
 
   const loading = stages.length === 0 && !error
 
